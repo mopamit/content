@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פתיחת השיעור – יהדות ומודרנה</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Frank+Ruhl+Libre:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a2845;--navy2:#243560;
+  --gold:#b8860b;--goldp:#fef9e7;
+  --blue:#2874a6;--bluep:#eaf3fa;
+  --teal:#117a65;--tealp:#e8f8f5;
+  --cream:#faf7f0;--parch:#f5f0e8;--border:#e0d8c8;
+  --ink:#1a1209;--ink2:#2c3e50;--ink3:#566573;
+  --green:#1e8449;--greenp:#eafaf1;
+  --red:#922b21;--redp:#fdedec;
+}
+*{margin:0;padding:0;box-sizing:border-box;outline:none;}
+body{font-family:'Heebo',sans-serif;background:var(--cream);color:var(--ink);direction:rtl;}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:inherit;}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;white-space:nowrap;border:0;}
+
+/* ─── SLIDESHOW ─── */
+.ss{max-width:900px;margin:0 auto;position:relative;padding-top:20px;}
+.slides{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 24px 50px -22px rgba(26,40,69,.4);}
+.slide{display:none;min-height:480px;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:60px 80px;position:relative;}
+.slide.on{display:flex;animation:fin .4s ease;}
+@keyframes fin{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.s1{background:linear-gradient(140deg,#1a2845,#243560);}
+.s2{background:linear-gradient(140deg,#0d4a6b,#1a7aad);}
+.s3{background:linear-gradient(140deg,#1e4a12,#3a8c20);}
+.s4{background:linear-gradient(140deg,#6b2a12,#b0481e);}
+.s5{background:linear-gradient(140deg,#1a2845,#2a3a7a);}
+.s6{background:linear-gradient(140deg,#2d1060,#5a2aaa);}
+.emoji{font-size:5rem;margin-bottom:20px;animation:pop .5s ease .15s both;}
+@keyframes pop{from{opacity:0;transform:scale(.6);}to{opacity:1;transform:scale(1);}}
+.stxt{font-family:'Frank Ruhl Libre',serif;font-size:1.75rem;font-weight:700;color:white;line-height:1.4;text-shadow:0 2px 8px rgba(0,0,0,.3);}
+.ssub{font-size:.92rem;color:rgba(255,255,255,.68);margin-top:14px;line-height:1.7;max-width:560px;}
+.ctr{position:absolute;top:14px;left:16px;font-size:.68rem;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:1px;}
+.dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:7px;}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:all .3s;}
+.dot.on{background:rgba(255,255,255,.9);transform:scale(1.3);}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:2px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;color:white;transition:all .2s;z-index:5;}
+.nav:hover{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.7);}
+.nav:disabled{opacity:.3;pointer-events:none;}
+.np{right:14px;}.nn{left:14px;}
+
+/* ─── GAME SECTION ─── */
+.gsec{max-width:900px;margin:0 auto;padding:40px 28px 16px;}
+.gtitle-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
+.gtitle{font-family:'Frank Ruhl Libre',serif;font-size:1.3rem;font-weight:700;color:var(--navy);}
+.gprog{font-size:.76rem;font-weight:700;color:var(--teal);background:var(--tealp);padding:4px 13px;border-radius:20px;white-space:nowrap;}
+.ginstr{font-size:.83rem;color:var(--ink3);line-height:1.65;margin-bottom:26px;}
+
+.game{position:relative;}
+.gsv{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2;overflow:visible;}
+
+.gcols{display:grid;grid-template-columns:1fr 36px 1fr 36px 1fr;gap:0;position:relative;z-index:3;}
+.chead{font-size:.68rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:white;padding:9px 12px;border-radius:10px 10px 0 0;text-align:center;margin-bottom:7px;}
+.ch-s{background:var(--navy);}
+.ch-h{background:var(--teal);}
+.ch-p{background:var(--blue);}
+.spacer{display:flex;align-items:center;justify-content:center;padding-top:40px;}
+.citems{display:flex;flex-direction:column;gap:7px;}
+
+.gi{
+  padding:11px 13px;border:1.5px solid var(--border);
+  border-radius:9px;background:white;font-size:.79rem;
+  color:var(--ink2);line-height:1.45;cursor:pointer;
+  transition:all .18s;position:relative;
+  display:flex;align-items:center;min-height:50px;
+}
+.gi:hover:not(.matched){background:var(--parch);border-color:#c8baa8;}
+.gi.sel{border-color:var(--navy);background:#e8edf5;box-shadow:0 0 0 2px var(--navy);}
+.gi.matched{border-color:var(--green);background:var(--greenp);color:var(--green);font-weight:600;pointer-events:none;}
+.gi:disabled{opacity:1;cursor:default;}
+.gi.wrong{border-color:var(--red);background:var(--redp);animation:shk .4s ease;}
+@keyframes shk{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+
+.cdot{position:absolute;width:10px;height:10px;border-radius:50%;top:50%;transform:translateY(-50%);z-index:4;}
+.cdot-r{right:-5px;}
+.cdot-l{left:-5px;}
+.ds{background:var(--navy);}
+.dh{background:var(--teal);}
+.dp{background:var(--blue);}
+
+.gfb{margin-top:16px;padding:12px 16px;border-radius:10px;font-size:.83rem;font-weight:600;display:none;}
+
+/* ─── RESET BUTTON ─── */
+.greset{
+  display:block;margin:16px auto 0;padding:9px 22px;
+  border:1.5px solid var(--navy);border-radius:9px;
+  background:white;color:var(--navy);
+  font-family:'Heebo',sans-serif;font-size:.82rem;font-weight:700;
+  cursor:pointer;transition:all .2s;
+}
+.greset:hover{background:var(--navy);color:white;}
+
+/* ─── RESPONSIVE (מתחת ל-640px) ─── */
+@media (max-width:640px){
+  .slide{padding:32px 20px;min-height:380px;}
+  .emoji{font-size:3rem;margin-bottom:12px;}
+  .stxt{font-size:1.3rem;}
+  .ssub{font-size:.85rem;max-width:100%;}
+  .nav{width:36px;height:36px;font-size:.85rem;}
+  .np{right:8px;}.nn{left:8px;}
+
+  .gsec{padding:28px 14px 16px;}
+  .gtitle{font-size:1.1rem;}
+  .ginstr{font-size:.78rem;}
+  .gcols{grid-template-columns:1fr 16px 1fr 16px 1fr;}
+  .chead{font-size:.6rem;padding:7px 6px;}
+  .gi{padding:8px 9px;font-size:.72rem;min-height:42px;}
+  .cdot{width:7px;height:7px;}
+  .cdot-r{right:-3px;}
+  .cdot-l{left:-3px;}
+}
+</style>
+</head>
+<body>
+
+<!-- SLIDESHOW -->
+<div class="ss" id="ss" role="region" aria-roledescription="קרוסלת שקופיות" aria-label="פתיחת השיעור" tabindex="0">
+  <div class="slides" id="slides"></div>
+  <div class="dots" id="dots"></div>
+  <button class="nav np" onclick="mv(1)" aria-label="השקופית הקודמת">→</button>
+  <button class="nav nn" onclick="mv(-1)" aria-label="השקופית הבאה">←</button>
+</div>
+<div id="live" class="sr-only" aria-live="polite"></div>
+
+<!-- MATCHING GAME -->
+<div class="gsec">
+  <div class="gtitle-row">
+    <div class="gtitle">מתחו קו: סיטואציה — הלכה — פתרון</div>
+    <div class="gprog" id="gprog" aria-live="polite">0/5 הותאמו</div>
+  </div>
+  <div class="ginstr">מתחו קו בין כל סיטואציה, האיסור ההלכתי שלה, והפתרון המתאים בשמירת שבת בעת המודרנית.<br>אם הקו לא נכון – הוא לא יתפס.</div>
+
+  <div class="game" id="game">
+    <svg id="gsv" class="gsv"></svg>
+    <div class="gcols">
+      <div>
+        <div class="chead ch-s">סיטואציה</div>
+        <div class="citems" id="col-s"></div>
+      </div>
+      <div class="spacer"></div>
+      <div>
+        <div class="chead ch-h">האיסור ההלכתי</div>
+        <div class="citems" id="col-h"></div>
+      </div>
+      <div class="spacer"></div>
+      <div>
+        <div class="chead ch-p">הפתרון</div>
+        <div class="citems" id="col-p"></div>
+      </div>
+    </div>
+  </div>
+  <div class="gfb" id="gfb" aria-live="polite"></div>
+  <button class="greset" onclick="resetGame()">↺ התחל מחדש</button>
+</div>
+
+<script>
+// ══ SLIDESHOW ══
+const SLIDES=[
+  {cls:'s1',emoji:'✨',txt:'אין ספק שהחיים המודרניים<br>הביאו איתם הקלות רבות לחיינו'},
+  {cls:'s2',emoji:'❄️',txt:'יום חם?<br>נדליק מזגן.'},
+  {cls:'s3',emoji:'💡',txt:'נהיה מאוחר ומחשיך?<br>נדליק את התאורה בבית.'},
+  {cls:'s4',emoji:'🍲',txt:'האוכל התקרר?<br>נכניס למיקרוגל חיש מהר.'},
+  {cls:'s5',emoji:'⚡',txt:'אבל מה בשבת?',sub:'החשמל נכנס לשימוש ביתי רחב בתחילת המאה ה-20. גדולי הפוסקים עסקו בשאלה – והוחלט: הפעלה וכיבוי חשמל בשבת אסור.'},
+  {cls:'s6',emoji:'🤔',txt:'אז מה נעשה?',sub:'לא נשתמש בחשמל ונחיה כמו בימי הביניים?!<br><br>איך אפשר לחיות במודרנה – וגם לשמור על השבת כהלכתה?'}
+];
+let cur=0;
+const N=SLIDES.length;
+
+function buildSlides(){
+  const wrap=document.getElementById('slides');
+  SLIDES.forEach((sl,i)=>{
+    const d=document.createElement('div');
+    d.className='slide '+sl.cls+(i===0?' on':'');
+    d.innerHTML=`<div class="ctr">${i+1} / ${N}</div><div class="emoji">${sl.emoji}</div><div class="stxt">${sl.txt}</div>`+
+      (sl.sub?`<div class="ssub">${sl.sub}</div>`:'');
+    wrap.appendChild(d);
+  });
+}
+
+function renderDots(){
+  const wrap=document.getElementById('dots');
+  wrap.innerHTML='';
+  wrap.setAttribute('role','tablist');
+  wrap.setAttribute('aria-label','בחירת שקופית');
+  for(let i=0;i<N;i++){
+    const b=document.createElement('button');
+    b.type='button';
+    b.className='dot'+(i===cur?' on':'');
+    b.setAttribute('role','tab');
+    b.setAttribute('aria-label',`שקופית ${i+1} מתוך ${N}`);
+    b.setAttribute('aria-selected',i===cur?'true':'false');
+    b.onclick=()=>go(i);
+    wrap.appendChild(b);
+  }
+}
+
+function mv(d){
+  const target=cur-d;
+  if(target<0||target>=N)return; // בקצה — לא לופ חזרה לתחילה/לסוף
+  go(target);
+}
+function go(n){
+  cur=n;
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('on',i===n));
+  renderDots();
+  document.querySelector('.np').disabled=(n===0);
+  document.querySelector('.nn').disabled=(n===N-1);
+  const live=document.getElementById('live');
+  const active=SLIDES[n];
+  live.textContent=`שקופית ${n+1} מתוך ${N}. ${active.txt.replace(/<br>/g,' ')} ${active.sub||''}`.trim();
+}
+
+document.getElementById('ss').addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'){mv(1);e.preventDefault();}
+  else if(e.key==='ArrowLeft'){mv(-1);e.preventDefault();}
+});
+
+buildSlides();
+go(0);
+
+// ══ GAME DATA ══
+const DATA=[
+  {id:0,s:"אני חייבת לשתות קפה חם בבוקר גם בשבת",h:"אסור לחמם מים בשבת",p:"מיחם – מרתיח מים לפני כניסת שבת ושומר על חומם"},
+  {id:1,s:"צריך לחמם את העוף לסעודת שבת",h:"אסור להשתמש במיקרוגל או אש לחימום אוכל בשבת",p:"פלטה – משטח חם עליו מניחים אוכל לחימום"},
+  {id:2,s:"חם נורא בשבת בצהריים – חייב להדליק מזגן",h:"אסור להדליק ולכבות אור או מזגן בשבת",p:"שעון שבת – מפעיל ומכבה אוטומטית את החשמל"},
+  {id:3,s:"אני רוצה לאכול סעודת שבת עם המשפחה מנתניה",h:"אסור לנהוג ברכב בשבת",p:"ניסע למשפחה לפני שבת ונתארח אצלם כל השבת"},
+  {id:4,s:"אני אוהב לצפות בסרטים",h:"אסור להשתמש בטלוויזיה ומסכים בשבת",p:"לא אצפה בטלוויזיה – זמן טוב למשחק קלפים עם האחים"}
+];
+
+// כל שלישייה (id) מקבלת צבע קבוע משלה, כולם בגווני כחול-ירוק
+const MATCH_COLORS=['#15803d','#0284c7','#0d9488','#1e3a8a','#134e4a'];
+function colorForId(id){return MATCH_COLORS[id%MATCH_COLORS.length];}
+function tint(hex,factor){
+  // ממזג את הצבע עם לבן ליצירת רקע פסטל אטום (לא שקוף - כדי שהקווים לא ייראו מבעד לתיבה)
+  const n=parseInt(hex.slice(1),16);
+  const r=(n>>16)&255,g=(n>>8)&255,b=n&255;
+  const mr=Math.round(r*factor+255*(1-factor));
+  const mg=Math.round(g*factor+255*(1-factor));
+  const mb=Math.round(b*factor+255*(1-factor));
+  return `rgb(${mr},${mg},${mb})`;
+}
+
+function shuffle(a){return a.slice().sort(()=>Math.random()-.5);}
+const sOrd=shuffle(DATA.map(d=>d.id));
+const hOrd=shuffle(DATA.map(d=>d.id));
+const pOrd=shuffle(DATA.map(d=>d.id));
+
+let sel={s:null,h:null,p:null};
+let matchCnt=0;
+const lines=[];
+const matchedIds=[]; // "פנקס זיכרון" — אילו זוגות הותאמו, לצורך שרטוט מחדש אחרי resize
+const COLLBL={s:'סיטואציה',h:'איסור הלכתי',p:'פתרון'};
+
+function updateProgress(){
+  document.getElementById('gprog').textContent=`${matchCnt}/${DATA.length} הותאמו`;
+}
+
+function buildGame(){
+  sOrd.forEach(id=>document.getElementById('col-s').appendChild(mkItem(DATA[id].s,'s',id,'ds','cdot-l')));
+  hOrd.forEach(id=>document.getElementById('col-h').appendChild(mkItemDual(DATA[id].h,'h',id)));
+  pOrd.forEach(id=>document.getElementById('col-p').appendChild(mkItem(DATA[id].p,'p',id,'dp','cdot-r')));
+}
+
+function mkItem(txt,col,id,dc,side){
+  const d=document.createElement('button');
+  d.type='button';
+  d.className='gi';d.dataset.col=col;d.dataset.id=id;
+  d.setAttribute('aria-pressed','false');
+  d.setAttribute('aria-label',`${COLLBL[col]}: ${txt}`);
+  d.innerHTML=`<span class="cdot ${dc} ${side}" data-col="${col}" data-id="${id}"></span>${txt}`;
+  d.onclick=()=>{if(!d.classList.contains('matched'))clickItem(col,id,d);};
+  return d;
+}
+
+function mkItemDual(txt,col,id){
+  const d=document.createElement('button');
+  d.type='button';
+  d.className='gi';d.dataset.col=col;d.dataset.id=id;
+  d.setAttribute('aria-pressed','false');
+  d.setAttribute('aria-label',`${COLLBL[col]}: ${txt}`);
+  d.innerHTML=`<span class="cdot dh cdot-r" data-col="${col}" data-id="${id}"></span>${txt}<span class="cdot dh cdot-l" data-col="${col}" data-id="${id}"></span>`;
+  d.onclick=()=>{if(!d.classList.contains('matched'))clickItem(col,id,d);};
+  return d;
+}
+
+function getEl(col,id){
+  return col==='h'
+    ?document.querySelector(`#col-h .gi[data-id="${id}"]`)
+    :document.querySelector(`#col-${col} .gi[data-id="${id}"]`);
+}
+
+function clickItem(col,id,el){
+  if(sel[col]!==null){
+    const prev=getEl(col,sel[col]);
+    if(prev){prev.classList.remove('sel');prev.setAttribute('aria-pressed','false');}
+  }
+  sel[col]=id;el.classList.add('sel');el.setAttribute('aria-pressed','true');
+  if(sel.s!==null&&sel.h!==null&&sel.p!==null)tryMatch();
+}
+
+function tryMatch(){
+  const {s,h,p}=sel;
+  const ok=(s===h&&h===p);
+  const es=getEl('s',s),eh=getEl('h',h),ep=getEl('p',p);
+  if(ok){
+    const mc=colorForId(s);
+    [es,eh,ep].forEach(e=>{if(e){
+      e.classList.remove('sel');e.classList.add('matched');e.disabled=true;e.setAttribute('aria-pressed','false');
+      e.style.borderColor=mc;e.style.color=mc;e.style.background=tint(mc,.13);
+      e.querySelectorAll('.cdot').forEach(dot=>dot.style.background=mc);
+    }});
+    matchedIds.push(s);
+    redrawLines(); // לא רק מציירים את הזוג החדש: כרטיס שמסומן כ"הותאם" מתעבה (font-weight),
+                    // וזה יכול להגדיל את הגובה שלו ולהזיז כרטיסים אחרים בעמודה — אז מציירים
+                    // מחדש את כל הקווים לפי המיקום הנוכחי, לא רק את החדש.
+    matchCnt++;
+    updateProgress();
+    if(matchCnt>=DATA.length){
+      setTimeout(()=>{
+        showFb('כל הכבוד! הצלחת!',true);
+      },400);
+    }
+  } else {
+    const correctPairs=(s===h?1:0)+(h===p?1:0);
+    [es,eh,ep].forEach(e=>{if(e){e.classList.remove('sel');e.classList.add('wrong');e.setAttribute('aria-pressed','false');setTimeout(()=>e.classList.remove('wrong'),450);}});
+    showFb(correctPairs>0?`כיוון טוב — ${correctPairs} מתוך 2 חיבורים נכונים. נסו שוב!`:'לא מדויק – נסו שוב!',false);
+    setTimeout(()=>document.getElementById('gfb').style.display='none',1800);
+  }
+  sel={s:null,h:null,p:null};
+}
+
+function showFb(txt,ok){
+  const fb=document.getElementById('gfb');
+  fb.style.display='block';
+  fb.style.background=ok?'var(--greenp)':'var(--redp)';
+  fb.style.color=ok?'#175a30':'#501313';
+  fb.textContent=txt;
+}
+
+// ══ DRAW LINES ══
+function getDotPos(col,id,side){
+  // side: 'r' or 'l'
+  const dots=document.querySelectorAll(`.cdot[data-col="${col}"][data-id="${id}"]`);
+  const wrap=document.getElementById('game');
+  const wr=wrap.getBoundingClientRect();
+  for(const dot of dots){
+    const isR=dot.classList.contains('cdot-r');
+    const dr=dot.getBoundingClientRect();
+    if((side==='r'&&isR)||(side==='l'&&!isR)){
+      return{x:dr.left-wr.left+dr.width/2,y:dr.top-wr.top+dr.height/2};
+    }
+  }
+  return null;
+}
+
+function drawLine(fromEl,toEl,pair,color){
+  if(!fromEl||!toEl)return;
+  const fcol=fromEl.dataset.col,fid=fromEl.dataset.id;
+  const tcol=toEl.dataset.col,tid=toEl.dataset.id;
+  // כל שלישייה מסודרת מימין לשמאל: סיטואציה ← איסור הלכתי ← פתרון.
+  // הקו מחבר תמיד את הנקודה הפונה פנימה (לכיוון העמודה השכנה), לא את הנקודה החיצונית.
+  let p1,p2;
+  if(pair==='sh'){p1=getDotPos('s',fid,'l');p2=getDotPos('h',tid,'r');}
+  else{p1=getDotPos('h',fid,'l');p2=getDotPos('p',tid,'r');}
+
+  // fallback centers
+  const wr=document.getElementById('game').getBoundingClientRect();
+  if(!p1){const r=fromEl.getBoundingClientRect();p1={x:r.right-wr.left,y:r.top-wr.top+r.height/2};}
+  if(!p2){const r=toEl.getBoundingClientRect();p2={x:r.left-wr.left,y:r.top-wr.top+r.height/2};}
+
+  const svg=document.getElementById('gsv');
+  const line=document.createElementNS('http://www.w3.org/2000/svg','path');
+  const mx=(p1.x+p2.x)/2;
+  const d=`M${p1.x},${p1.y} C${mx},${p1.y} ${mx},${p2.y} ${p2.x},${p2.y}`;
+  line.setAttribute('d',d);
+  line.setAttribute('fill','none');
+  line.setAttribute('stroke',color||'#1e8449');
+  line.setAttribute('stroke-width','2.5');
+  line.setAttribute('stroke-linecap','round');
+  const len=250;
+  line.style.strokeDasharray=len;
+  line.style.strokeDashoffset=len;
+  line.style.animation='dl .4s ease forwards';
+  svg.appendChild(line);
+  lines.push(line);
+}
+
+const st=document.createElement('style');
+st.textContent='@keyframes dl{to{stroke-dashoffset:0;}}';
+document.head.appendChild(st);
+
+// מצייר מחדש את כל הקווים של הזוגות שהותאמו, לפי המיקום הנוכחי של הריבועים
+function redrawLines(){
+  document.getElementById('gsv').innerHTML='';
+  lines.length=0;
+  matchedIds.forEach(id=>{
+    const es=getEl('s',id),eh=getEl('h',id),ep=getEl('p',id);
+    const mc=colorForId(id);
+    drawLine(es,eh,'sh',mc);
+    drawLine(eh,ep,'hp',mc);
+  });
+}
+
+let resizeTimer=null;
+window.addEventListener('resize',()=>{
+  clearTimeout(resizeTimer);
+  resizeTimer=setTimeout(redrawLines,150);
+});
+
+// ══ RESET GAME ══
+function resetGame(){
+  document.getElementById('gsv').innerHTML='';
+  lines.length=0;
+  matchedIds.length=0;
+
+  document.querySelectorAll('.gi').forEach(e=>{
+    e.classList.remove('matched','sel','wrong');
+    e.disabled=false;
+    e.setAttribute('aria-pressed','false');
+    e.style.borderColor='';e.style.color='';e.style.background='';
+    e.querySelectorAll('.cdot').forEach(dot=>dot.style.background='');
+  });
+  sel={s:null,h:null,p:null};
+  matchCnt=0;
+  updateProgress();
+  document.getElementById('gfb').style.display='none';
+
+}
+
+buildGame();
+updateProgress();
+</script>
+</body>
+</html>
